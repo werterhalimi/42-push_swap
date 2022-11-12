@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 03:13:18 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 03:59:40 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 04:20:18 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	count_char(char *str, char c)
 		if (str[i] == c)
 		{
 			count++;
-			while (str[i] ==c)
+			while (str[i] == c)
 				i++;
-			continue;
+			continue ;
 		}
 		i++;
 	}
@@ -52,12 +52,12 @@ int	*ft_stois(char *args, int *len)
 		ret[i] = ft_atoi(values[i]);
 		i++;
 	}
-	return ret; 
+	return (ret);
 }
 
-t_board parse(char *args)
+t_board	parse(char *args)
 {
-	t_board ret;
+	t_board	ret;
 	int		len;
 	int		*a;
 

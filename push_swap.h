@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:47:20 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 04:16:17 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 04:19:28 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_board
 	int	len_b;
 	int	*a;
 	int	*b;
-} t_board;
+}	t_board;
 
 t_board	new_board(int *input, int len);
 void	finish(t_board board);
