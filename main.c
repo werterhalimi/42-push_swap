@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:46:44 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/11 23:30:03 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 03:04:57 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	int		input[5] = {1, 2, 0, 4, 5};
 
 	board = new_board(input, 5);
-	ft_putnbr_fd(get_lower_index(board), 1);
+	is_sorted(board);
 	ft_putendl_fd("", 1);
 	return (0);
 }

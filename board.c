@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:51:55 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/11 23:29:47 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 03:03:35 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ int	is_sorted(t_board board)
 
 	i = 0;
 	while (i < board.len_a)
+	{
 		if (board.a[i] > board.a[i + 1])
 			return (0);
+		i++;
+	}
 	return (1);
 }
