@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:47:20 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 04:19:28 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 18:34:47 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ void	finish(t_board board);
 int		is_sorted(t_board board);
 int		get_lower_index(t_board board);
 t_board	parse(char *args);
+int		is_uniq(t_board board);
+int		*find_lower(t_board board, int number);
 #endif

@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 03:13:18 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 04:20:18 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 18:32:54 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,24 @@ t_board	parse(char *args)
 	a = ft_stois(args, &len);
 	ret = new_board(a, len);
 	return (ret);
+}
+
+int	is_uniq(t_board board)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < board.len_a)
+	{
+		j = 0;
+		while (j < board.len_a && j != i)
+		{
+			if (board.a[i] == board.a[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
