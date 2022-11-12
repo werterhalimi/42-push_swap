@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:34 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 22:15:00 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 22:28:49 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_step	*get_top_path(t_board board, int index)
 		ft_lstadd_back(&ret, ft_lstnew(name));
 		step--;
 	}
+	ft_lstadd_back(&ret, ft_lstnew(ATOB));
 	ft_lstadd_back(&ret, ft_lstnew(0));
 	return (ret);
 }
