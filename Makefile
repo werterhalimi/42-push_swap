@@ -4,14 +4,14 @@ CFLAGS = -Wall -Wextra -Werror -lm -D MAIN
 CC = gcc
 SRC_PATH = ./
 OPTIONS = -I./libft 
-SRC = main.c board.c parse.c solver.c
+SRC = main.c board.c parse.c solver.c push_swap_utils.c
 SRCS = $(addprefix $(SRC_PATH),$(SRC))
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(LIBFT):
-			make -C $(LIBFT)
+			make -C $(LIBFT) bonus
 			mv ./libft/libft.a libft.a
 			ar rcs libft.a ${OBJS} 
 
