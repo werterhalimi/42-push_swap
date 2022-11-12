@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:51:55 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 22:24:06 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/12 22:27:37 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_board	new_board(int *input, int len)
 	ret.b = ft_calloc(sizeof(int), len);
 	return (ret);
 }
+
 //leaks
 int	*find_lower(t_board board, int number)
 {
@@ -33,7 +34,7 @@ int	*find_lower(t_board board, int number)
 	i = 0;
 	tmp = ft_calloc(sizeof(int), number);
 	ret = ft_calloc(sizeof(int), number);
-	if (!tmp)
+	if (!tmp || !ret)
 		return (0);
 	ft_arcpy(tmp, board.a, (size_t) number);
 	while (i < board.len_a)
