@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:51:55 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 22:27:37 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/14 03:15:57 by shai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_board	new_board(int *input, int len)
 {
 	t_board	ret;
 
-	ret.len_a = len;
+	ret.len_a = len; 
 	ret.len_b = 0;
 	ret.a = input;
 	ret.b = ft_calloc(sizeof(int), len);
@@ -90,4 +90,20 @@ int	is_sorted(t_board board)
 		i++;
 	}
 	return (1);
+}
+
+void	ft_printboard(t_board board)
+{
+	int	i;
+
+	i = 0;
+	while (i < max(board.len_a, board.len_b))
+	{
+		ft_putnbr_fd(board.a[i], 1);
+		ft_putstr_fd(" ", 1);
+		if (i > abs(board.len_a - board.len_b) - 1)
+			ft_putnbr_fd(board.b[i - abs(board.len_a - board.len_b)], 1);
+		ft_putendl_fd("", 1);
+		i++;
+	}
 }

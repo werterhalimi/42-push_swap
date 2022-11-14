@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:47:20 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 22:07:04 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/14 19:38:09 by shai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ t_step	*get_top_path(t_board board, int index);
 int		ar_contain(int	*ar, int len, int contain);
 void	print_steps(t_board board);
 void	*ft_arcpy(int *dest, int *src, size_t n);
+void	ft_printboard(t_board board);
+int	abs(int i);
+int	max(int a, int b);
+void	push_b(t_board *board);
+void 	ra(t_board *board);
+void 	rb(t_board *board);
 #endif

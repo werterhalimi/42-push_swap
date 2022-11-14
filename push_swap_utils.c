@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:50:40 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 22:01:38 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/14 02:20:45 by shai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,18 @@ int	ar_contain(int *ar, int len, int contain)
 		i++;
 	}
 	return (0);
+}
+
+int	abs(int i)
+{
+	if (i < 0)
+		return (i * -1);
+	return (i);
+}
+
+int	max(int a, int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
 }

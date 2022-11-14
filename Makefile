@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -lm -D MAIN
 CC = gcc
 SRC_PATH = ./
 OPTIONS = -I./libft 
-SRC = main.c board.c parse.c solver.c push_swap_utils.c
+SRC = main.c board.c parse.c solver.c push_swap_utils.c board_utils.c
 SRCS = $(addprefix $(SRC_PATH),$(SRC))
 OBJS = $(SRCS:.c=.o)
 
