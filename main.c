@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:46:44 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/14 19:38:51 by shai             ###   ########.fr       */
+/*   Updated: 2022/11/15 14:17:01 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,27 @@ int	main(int argc, char **argv)
 	ft_putendl_fd("", 1);
 	board.step = get_top_path(board, 6);
 	print_steps(board);
-	ft_putendl_fd("\ntest rb\n before", 1);
+		ft_putendl_fd("\ntest pb before", 1);
 	ft_printboard(board);
 	int no_rb = 0;
-	while (no_rb < board.len_a)
+	while (no_rb < 5)
 	{
-		rb(&board);
+		push_b(&board);
 		ft_putstr_fd("\nafter - ",1);
 		ft_putnbr_fd(no_rb, 1);
-		ft_putendl_fd(" rb", 1);
+		ft_putendl_fd(" pb", 1);
+		ft_printboard(board);
+		no_rb++;
+	}
+	ft_putendl_fd("\ntest pa before", 1);
+	ft_printboard(board);
+	no_rb = 0;
+	while (no_rb < 3)
+	{
+		push_a(&board);
+		ft_putstr_fd("\nafter - ",1);
+		ft_putnbr_fd(no_rb, 1);
+		ft_putendl_fd(" pa", 1);
 		ft_printboard(board);
 		no_rb++;
 	}

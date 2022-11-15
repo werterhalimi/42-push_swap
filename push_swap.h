@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:47:20 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/14 19:38:09 by shai             ###   ########.fr       */
+/*   Updated: 2022/11/15 13:20:10 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_printboard(t_board board);
 int	abs(int i);
 int	max(int a, int b);
 void	push_b(t_board *board);
+void	push_a(t_board *board);
 void 	ra(t_board *board);
 void 	rb(t_board *board);
 #endif
