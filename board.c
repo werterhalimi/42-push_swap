@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:51:55 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/14 03:15:57 by shai             ###   ########.fr       */
+/*   Updated: 2022/11/15 14:17:26 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,22 @@ int	is_sorted(t_board board)
 void	ft_printboard(t_board board)
 {
 	int	i;
+	int	m;
 
+	m = max(board.len_a, board.len_b);
 	i = 0;
-	while (i < max(board.len_a, board.len_b))
+	while (i < m)
 	{
-		ft_putnbr_fd(board.a[i], 1);
-		ft_putstr_fd(" ", 1);
-		if (i > abs(board.len_a - board.len_b) - 1)
-			ft_putnbr_fd(board.b[i - abs(board.len_a - board.len_b)], 1);
-		ft_putendl_fd("", 1);
+		if (m - i <= board.len_a)
+			ft_putnbr_fd(board.a[i - (m - board.len_a)], 1);
+		else
+			ft_putchar_fd('*', 1);
+		ft_putchar_fd(' ', 1);
+		if (m - i <= board.len_b)
+			ft_putnbr_fd(board.b[i- (m - board.len_b)], 1);
+		else
+			ft_putchar_fd('*', 1);
+		ft_putchar_fd('\n', 1);
 		i++;
 	}
 }
