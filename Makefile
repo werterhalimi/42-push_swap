@@ -17,10 +17,13 @@ $(LIBFT):
 
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -c $< -o $@ -g 
+	$(CC) -Wall -Wextra -Werror -fsanitize=address -c $< -o $@ -g
+
+unit: $(OBJS) $(LIBFT)
+	$(CC)  -D UNIT -Ilibft -L. -lft $(OBJS) -o $(NAME) -g 
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC)  -Ilibft -L. -lft $(OBJS) -o $(NAME) -g 
+	$(CC)  -fsanitize=address -Ilibft -L. -lft $(OBJS) -o $(NAME) -g 
 
 clean:	
 		rm -f $(OBJS)

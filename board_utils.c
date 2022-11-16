@@ -6,7 +6,7 @@
 /*   By: shai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 02:29:30 by shai              #+#    #+#             */
-/*   Updated: 2022/11/15 13:19:04 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:23:25 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,38 @@ void	rb(t_board *board)
 	}
 	board->b[i - 1] = tmp;
 }
+
+void	rrb(t_board *board)
+{
+	int	tmp;
+	int	i;
+	
+	i = board->len_b - 1;
+	tmp = board->b[board->len_b - 1];
+	while (i >= 1)
+	{
+		board->b[i] = board->b[i - 1];
+		i--;
+	}
+	board->b[0] = tmp;
+}
+
+
+void	rra(t_board *board)
+{
+	int	tmp;
+	int	i;
+	
+	i = board->len_a - 1;
+	tmp = board->a[board->len_a - 1];
+	while (i >= 1)
+	{
+		board->a[i] = board->a[i - 1];
+		i--;
+	}
+	board->a[0] = tmp;
+}
+
 
 void	ra(t_board *board)
 {

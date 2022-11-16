@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:51:55 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/15 14:17:26 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/16 19:09:06 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_board	new_board(int *input, int len)
 {
 	t_board	ret;
 
+	ret.step = 0;
+	ret.no_step = 0;
 	ret.len_a = len; 
 	ret.len_b = 0;
 	ret.a = input;
@@ -23,37 +25,111 @@ t_board	new_board(int *input, int len)
 	return (ret);
 }
 
-//leaks
-int	*find_lower(t_board board, int number)
+int	find_lower_ar(int *a, int len_a)
 {
-	int	*ret;
-	int	*tmp;
 	int	i;
-	int	j;
+	int ret;
+	int	tmp;
 
-	i = 0;
-	tmp = ft_calloc(sizeof(int), number);
-	ret = ft_calloc(sizeof(int), number);
-	if (!tmp || !ret)
-		return (0);
-	ft_arcpy(tmp, board.a, (size_t) number);
-	while (i < board.len_a)
+	i = 1;
+	ret = 0;
+	tmp = a[0];
+	while (i < len_a)
 	{
-		j = 0;
-		while (j < number)
+		if (a[i] < tmp)
 		{
-			if (board.a[i] < tmp[j] && !ar_contain(tmp, number, board.a[i]))
-			{
-				tmp[j] = board.a[i];
-				ret[j] = i;
-				i = -1;
-				break ;
-			}
-			j++;
+			ret = i;
+			tmp = a[i];
 		}
 		i++;
 	}
-	free(tmp);
+	return (ret);
+}
+
+
+int	find_lower(t_board board)
+{
+	int	i;
+	int ret;
+	int	tmp;
+
+	i = 1;
+	ret = 0;
+	tmp = board.a[0];
+	while (i < board.len_a)
+	{
+		if (board.a[i] < tmp)
+			ret = i;
+		tmp = board.a[i];
+		i++;
+	}
+	return (ret);
+}
+
+int	find_highest(int	*ar, int len)
+{
+	int	i;
+	int	ret;
+
+	i = 1;
+	ret = 0;
+	while (i < len)
+	{
+		if (ar[i] > ar[ret])
+			ret = i;
+		i++;
+	}
+	return (ret);
+}
+
+int	get_index(int	*ar, int value, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (ar[i] == value)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int	*find_lowers(t_board board, int size)
+{
+	int	*ret;
+	int	i;
+	int	j;
+	int	count;
+	int	p;
+
+	if (board.len_a < size)
+		size = board.len_a;
+	ret = malloc(sizeof(int) * size);
+	if (!ret)
+		return (0);
+	i = 0;
+	p = 0;
+	while (i < board.len_a)
+	{
+		j = 0;
+		count = 0;
+		while (j < board.len_a)
+		{
+			if (j != i && board.a[j] < board.a[i])
+				count++;
+			if (count >= size)
+				break ;
+			j++;
+		}
+		if (count < size)
+		{
+			ret[p] = board.a[i];
+			p++;
+		}
+		i++;
+	}
 	return (ret);
 }
 
@@ -113,4 +189,5 @@ void	ft_printboard(t_board board)
 		ft_putchar_fd('\n', 1);
 		i++;
 	}
+	ft_putendl_fd("-----------", 1);
 }

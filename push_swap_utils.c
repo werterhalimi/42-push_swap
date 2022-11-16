@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:50:40 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/14 02:20:45 by shai             ###   ########.fr       */
+/*   Updated: 2022/11/15 16:07:26 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,29 @@ int	max(int a, int b)
 	if (a < b)
 		return (b);
 	return (a);
+}
+
+int	*sort(int *lowers, int len)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		j = 0;
+		while (j < len - 1)
+		{
+			if (lowers[j] < lowers[j + 1])
+			{
+				tmp = lowers[j];
+				lowers[j] = lowers[j + 1];
+				lowers[j + 1] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (lowers);
 }
