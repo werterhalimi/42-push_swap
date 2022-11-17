@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:46:44 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/17 03:28:42 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/17 03:33:36 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,18 @@ int	main(int argc, char **argv)
 	int		*result;
 	int		size;
 
+	if (argc < 2)
+	{
+		ft_putendl_fd("try ./push_swap \"1 2 3\"", 1);
+		return (0);
+	}
 	if (argc > 2)
 		board = parse_ar(argc, argv);
 	else
 		board = parse(argv[1]);
 	if (!is_uniq(board))
 	{
-		ft_putendl_fd("La liste ne doit pas contenir de doublon", 1);
+		ft_putendl_fd("Error (with newline)", 1);
 		return (0);
 	}
 	if (is_sorted(board))
