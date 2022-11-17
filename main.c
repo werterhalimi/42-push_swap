@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:46:44 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/17 02:12:53 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/17 03:28:42 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_map	reset_board(t_board *board, int a)
 	t_map	map;
 
 	board->step = 0;
-	board->no_step = 0;
 	if (a)
 	{
+		board->no_step = 0;
 		map.up = UP;
 		map.down = DOWN;
 		map.f = ATOB;
@@ -65,13 +65,12 @@ void	sort_chunk(t_board *board, int len, int print, t_map map)
 	free(lowers);
 }
 
-void	resolve(t_board *board, char **argv, int try, int print)
+void	resolve(t_board *board, int try, int print)
 {	
 	t_step	*step;
 	int		len;
 	t_map	map;
 
-	*board = parse(argv[1]);
 	map = reset_board(board, 1);
 	while (board->len_a > 0)
 	{
@@ -97,18 +96,35 @@ int	main(int argc, char **argv)
 	int		*result;
 	int		size;
 
-	(void) argc;
-	board = parse(argv[1]);
+	if (argc > 2)
+		board = parse_ar(argc, argv);
+	else
+		board = parse(argv[1]);
+	if (!is_uniq(board))
+	{
+		ft_putendl_fd("La liste ne doit pas contenir de doublon", 1);
+		return (0);
+	}
+	if (is_sorted(board))
+		return (0);
 	size = board.len_a / 5;
 	result = ft_calloc(sizeof(int), size);
 	try = 0;
 	while (try < size)
 	{
-		resolve(&board, argv, try, 0);
+		if (argc > 2)
+			board = parse_ar(argc, argv);
+		else
+			board = parse(argv[1]);
+		resolve(&board, try, 0);
 		result[try] = board.no_step;
 		try++;
 	}
-	resolve(&board, argv, find_lower_ar(result, size), 1);
+	if (argc > 2)
+		board = parse_ar(argc, argv);
+	else
+		board = parse(argv[1]);
+	resolve(&board, find_lower_ar(result, size), 1);
 }
 #endif
 

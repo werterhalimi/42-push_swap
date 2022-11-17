@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 03:13:18 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/17 01:46:01 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/17 03:28:42 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	*ft_stois(char *args, int *len, char **values)
 	while (i < *len)
 	{
 		ret[i] = ft_atoi(values[i]);
+		
 		i++;
 	}
 	return (ret);
