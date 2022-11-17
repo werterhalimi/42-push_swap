@@ -6,90 +6,109 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:46:44 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/16 19:11:48 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/17 02:12:53 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 void	finish(t_board board)
 {
 	free(board.a);
 	free(board.b);
 }
-#include <stdio.h>
-//#define UNIT
 
-
-
-
-#ifndef UNIT
-int	main(int argc, char **argv)
+t_map	reset_board(t_board *board, int a)
 {
-	(void) argc;
-	t_step	*step;
-	t_board board;
-	int try = 0;
-	int		*lowers;
-	int		i;
-	int		len;
-	t_map map;
+	t_map	map;
 
-	
-	board = parse(argv[1]);
-	int	*result = ft_calloc(sizeof(int) , board.len_a);
-	int size = board.len_a;
-	while (try < size)
+	board->step = 0;
+	board->no_step = 0;
+	if (a)
 	{
-		board = parse(argv[1]);
-		board.step = 0;
-		board.no_step = 0;
-
 		map.up = UP;
 		map.down = DOWN;
 		map.f = ATOB;
-		while (board.len_a > 0)
-		{
-			len = try;
-			if (len == 0) len = 1;
-			if (len > board.len_a)
-				len = board.len_a;
-			lowers = find_lowers(board, len);
-			//lowers = sort(lowers, len);
-			i = 0;
-			while (i < len)
-			{
-				step = get_top_path(board.len_a, get_index(board.a, lowers[i], board.len_a),map);
-				if (board.step == 0)
-					board.step = step;
-				else
-					ft_lstadd_back(&board.step, step);
-				do_step(&board, step);
-				i++;
-			}
-			free(lowers);
-		}
+	}
+	else
+	{
 		map.up = UP_B;
 		map.down = DOWN_B;
 		map.f = BTOA;
-		while (board.len_b > 0)
-		{
-			step = get_top_path(board.len_b, find_highest(board.b, board.len_b), map);
-			ft_lstadd_back(&board.step, step);
-			do_step(&board, step);
-		}
-		ft_putstr_fd("Chunk of ", 1);
-		ft_putnbr_fd(try, 1);
-		ft_putstr_fd(" - Nombre d'etapes: ", 1);
-		ft_putnbr_fd(board.no_step, 1);
+	}
+	return (map);
+}
+
+void	sort_chunk(t_board *board, int len, int print, t_map map)
+{
+	t_step	*step;
+	int		i;
+	int		*lowers;
+
+	if (len == 0)
+		len = 1;
+	if (len > board->len_a)
+		len = board->len_a;
+	lowers = find_lowers(*board, len);
+	i = 0;
+	while (i < len)
+	{
+		step = get_top_path(board->len_a,
+				get_index(board->a, lowers[i], board->len_a), map);
+		if (board->step == 0)
+			board->step = step;
+		else
+			append_board_step(board, *step);
+		do_step(board, step, print);
+		i++;
+	}
+	free(lowers);
+}
+
+void	resolve(t_board *board, char **argv, int try, int print)
+{	
+	t_step	*step;
+	int		len;
+	t_map	map;
+
+	*board = parse(argv[1]);
+	map = reset_board(board, 1);
+	while (board->len_a > 0)
+	{
+		len = try;
+		sort_chunk(board, len, print, map);
+	}
+	map = reset_board(board, 0);
+	while (board->len_b > 0)
+	{
+		step = get_top_path(board->len_b,
+				find_highest(board->b, board->len_b), map);
+		ft_lstadd_back(&board->step, step);
+		do_step(board, step, print);
+	}
+}
+
+#ifndef UNIT
+
+int	main(int argc, char **argv)
+{
+	t_board	board;
+	int		try;
+	int		*result;
+	int		size;
+
+	(void) argc;
+	board = parse(argv[1]);
+	size = board.len_a / 5;
+	result = ft_calloc(sizeof(int), size);
+	try = 0;
+	while (try < size)
+	{
+		resolve(&board, argv, try, 0);
 		result[try] = board.no_step;
-		ft_putendl_fd("", 1);
 		try++;
 	}
-	ft_putendl_fd("\nGetting lowest...\nIndex ", 1);
-	ft_putnbr_fd(find_lower_ar(result, size), 1);
-	ft_putendl_fd("\nValue", 1);
-	ft_putnbr_fd(result[find_lower_ar(result, size)], 1);
-//	ft_printboard(board);
+	resolve(&board, argv, find_lower_ar(result, size), 1);
 }
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 03:13:18 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/12 18:32:54 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/17 01:46:01 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ int	count_char(char *str, char c)
 	return (count + 1);
 }
 
-int	*ft_stois(char *args, int *len)
+int	*ft_stois(char *args, int *len, char **values)
 {
 	int		*ret;
-	char	**values;
 	int		i;
 
 	i = 0;
-	values = ft_split(args, ' ');
-	*len = count_char(args, ' ');
+	if (!values)
+	{
+		values = ft_split(args, ' ');
+		*len = count_char(args, ' ');
+	}
 	ret = ft_calloc(sizeof(int), *len);
 	if (!ret)
 		return (0);
@@ -55,13 +57,25 @@ int	*ft_stois(char *args, int *len)
 	return (ret);
 }
 
+t_board	parse_ar(int argc, char **argv)
+{
+	t_board	ret;
+	int		*a;
+
+	argc--;
+	argv++;
+	a = ft_stois(0, &argc, argv);
+	ret = new_board(a, argc);
+	return (ret);
+}
+
 t_board	parse(char *args)
 {
 	t_board	ret;
 	int		len;
 	int		*a;
 
-	a = ft_stois(args, &len);
+	a = ft_stois(args, &len, 0);
 	ret = new_board(a, len);
 	return (ret);
 }

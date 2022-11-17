@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:51:55 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/16 19:09:06 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/17 01:46:57 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_board	new_board(int *input, int len)
 
 	ret.step = 0;
 	ret.no_step = 0;
-	ret.len_a = len; 
+	ret.len_a = len;
 	ret.len_b = 0;
 	ret.a = input;
 	ret.b = ft_calloc(sizeof(int), len);
@@ -28,7 +28,7 @@ t_board	new_board(int *input, int len)
 int	find_lower_ar(int *a, int len_a)
 {
 	int	i;
-	int ret;
+	int	ret;
 	int	tmp;
 
 	i = 1;
@@ -46,11 +46,10 @@ int	find_lower_ar(int *a, int len_a)
 	return (ret);
 }
 
-
 int	find_lower(t_board board)
 {
 	int	i;
-	int ret;
+	int	ret;
 	int	tmp;
 
 	i = 1;
@@ -183,7 +182,7 @@ void	ft_printboard(t_board board)
 			ft_putchar_fd('*', 1);
 		ft_putchar_fd(' ', 1);
 		if (m - i <= board.len_b)
-			ft_putnbr_fd(board.b[i- (m - board.len_b)], 1);
+			ft_putnbr_fd(board.b[i - (m - board.len_b)], 1);
 		else
 			ft_putchar_fd('*', 1);
 		ft_putchar_fd('\n', 1);

@@ -1,2 +1,2 @@
-a = (-500..0).to_a.shuffle
+a = (500..1000).to_a.shuffle
 print a.join(' ')

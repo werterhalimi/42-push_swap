@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:50:40 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/15 16:07:26 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/17 01:43:25 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,16 @@ int	*sort(int *lowers, int len)
 		i++;
 	}
 	return (lowers);
+}
+
+void	append_board_step(t_board *board, t_step step)
+{
+	t_step	*current;
+
+	current = board->step;
+	while (current->next)
+	{
+		current = current->next;
+	}
+	*current = step;
 }
