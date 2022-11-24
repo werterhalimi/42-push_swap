@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:46:44 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/24 19:11:04 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/24 19:45:18 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	resolve(t_board *board, int try, int print)
 		ft_lstadd_back(&board->step, step);
 		do_step(board, step, print);
 	}
+	if (print)
+		finish(*board);
 }
 
 int	main(int argc, char **argv)
