@@ -6,7 +6,7 @@
 /*   By: shalimi <shalimi@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:31:08 by shalimi           #+#    #+#             */
-/*   Updated: 2022/10/18 21:18:58 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/24 19:01:18 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ void	*ft_calloc(size_t nb, size_t len)
 		return (0);
 	while (i < (int)(len * nb))
 		((unsigned char *)ret)[i++] = 0;
+	if (!ret)
+	{
+		ft_putendl_fd("Error", 2);
+		exit(0);
+	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:47:20 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/17 01:44:36 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/24 19:02:17 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef t_list	t_step;
 
 t_board	new_board(int *input, int len);
 void	finish(t_board board);
+void	error(void);
 int		is_sorted(t_board board);
 int		get_lower_index(t_board board);
 t_board	parse(char *args);
@@ -67,4 +68,7 @@ int		find_highest(int *ar, int len);
 int		get_index(int	*ar, int value, int len);
 int		find_lower_ar(int *a, int len_a);
 void	append_board_step(t_board *board, t_step step);
+void	solve_three(t_board *board);
+void	solve_five(t_board *board);
+int		redirect(int argc, char **argv, t_board *board);
 #endif

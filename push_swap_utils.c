@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:50:40 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/17 01:43:25 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:14:00 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,31 +53,6 @@ int	max(int a, int b)
 	if (a < b)
 		return (b);
 	return (a);
-}
-
-int	*sort(int *lowers, int len)
-{
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 0;
-	while (i < len - 1)
-	{
-		j = 0;
-		while (j < len - 1)
-		{
-			if (lowers[j] < lowers[j + 1])
-			{
-				tmp = lowers[j];
-				lowers[j] = lowers[j + 1];
-				lowers[j + 1] = tmp;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (lowers);
 }
 
 void	append_board_step(t_board *board, t_step step)

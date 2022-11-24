@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:34 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/17 01:42:34 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:50:45 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,32 @@ void	print_steps(t_board board)
 		ft_putendl_fd(board.step->content, 1);
 		board.step = board.step->next;
 	}
+}
+
+int	redirect(int argc, char **argv, t_board *board)
+{
+	if (argc < 2)
+		return (0);
+	if (argc > 2)
+		*board = parse_ar(argc, argv);
+	else
+		*board = parse(argv[1]);
+	if (!is_uniq(*board))
+	{
+		ft_putendl_fd("Error", 2);
+		return (0);
+	}
+	if (is_sorted(*board))
+		return (0);
+	if (board->len_a == 3)
+	{
+		solve_three(board);
+		return (0);
+	}
+	if (board->len_a <= 5)
+	{
+		solve_five(board);
+		return (0);
+	}
+	return (1);
 }

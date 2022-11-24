@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 03:13:18 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/17 03:28:42 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/24 19:05:13 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,26 @@ int	count_char(char *str, char c)
 	return (count + 1);
 }
 
-int	*ft_stois(char *args, int *len, char **values)
+int	*ft_stois(int *len, char **values)
 {
 	int		*ret;
 	int		i;
+	int		j;
 
 	i = 0;
-	if (!values)
-	{
-		values = ft_split(args, ' ');
-		*len = count_char(args, ' ');
-	}
 	ret = ft_calloc(sizeof(int), *len);
-	if (!ret)
-		return (0);
 	while (i < *len)
 	{
+		j = 0;
+		while (j < (int) ft_strlen(values[i]))
+		{
+			if (values[i][j] == '-' && ft_isdigit(values[i][j + 1])
+				&& (j == 0 || values[i][j - 1] == ' '))
+				j++;
+			else if (!ft_isdigit(values[i][j++]))
+				error();
+		}
 		ret[i] = ft_atoi(values[i]);
-		
 		i++;
 	}
 	return (ret);
@@ -65,7 +67,7 @@ t_board	parse_ar(int argc, char **argv)
 
 	argc--;
 	argv++;
-	a = ft_stois(0, &argc, argv);
+	a = ft_stois(&argc, argv);
 	ret = new_board(a, argc);
 	return (ret);
 }
@@ -75,8 +77,11 @@ t_board	parse(char *args)
 	t_board	ret;
 	int		len;
 	int		*a;
+	char	**values;
 
-	a = ft_stois(args, &len, 0);
+	values = ft_split(args, ' ');
+	len = count_char(args, ' ');
+	a = ft_stois(&len, values);
 	ret = new_board(a, len);
 	return (ret);
 }

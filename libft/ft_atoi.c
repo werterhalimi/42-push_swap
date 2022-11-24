@@ -6,7 +6,7 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:31:02 by shalimi           #+#    #+#             */
-/*   Updated: 2022/10/18 21:08:57 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:14:20 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *str)
 {
-	int	ret;
-	int	i;
+	long int	ret;
+	int			i;
 
 	ret = 0;
 	i = 1;
@@ -32,5 +32,10 @@ int	ft_atoi(const char *str)
 		ret = ret * 10 + (*str - 48);
 		str++;
 	}
-	return (ret * i);
+	if (ret < -2147483648 || ret > 2147483647)
+	{
+		ft_putendl_fd("Error", 2);
+		exit(0);
+	}
+	return ((int)ret * i);
 }
