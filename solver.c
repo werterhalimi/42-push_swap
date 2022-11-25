@@ -88,11 +88,31 @@ int	redirect(int argc, char **argv, t_board *board)
 		finish(*board);
 		return (0);
 	}
-	if (board->len_a == 3)
+	if (board->len_a <= 3)
 		solve_three(board);
 	else if (board->len_a <= 5)
 		solve_five(board);
 	if (board->len_a <= 5)
 		finish(*board);
+	return (1);
+}
+
+int	str_has_digit(char *str)
+{
+	int	len;
+	int	i;
+
+	i = 0;
+	while (*str == ' ' || *str == '\t')
+		str++;
+	len = ft_strlen(str);
+	while (str[i])
+	{
+		if ((str[i] != '-' || len == 1 || i != 0) && !ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	if ((str[0] == ' ' || str[0] == '\t') && len == 1)
+		return (0);
 	return (1);
 }

@@ -18,13 +18,11 @@ $(LIBFT):
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror  -c $< -o $@ -g
-
 unit: $(OBJS) $(LIBFT)
 	$(CC)  -D UNIT -Ilibft -L. -lft $(OBJS) -o $(NAME) -g 
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC)  -Ilibft -L. -lft $(OBJS) -o $(NAME) -g 
-
+	$(CC)  -Ilibft -L. -lft $(OBJS) -o $(NAME) -g
 clean:	
 		rm -f $(OBJS)
 		make -C $(LIBFT) clean

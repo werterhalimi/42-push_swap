@@ -79,6 +79,8 @@ t_board	parse(char *args)
 	int		*a;
 	char	**values;
 
+	if (count_char(args, ' ') == 1 && str_has_digit(args))
+		exit(0);
 	values = ft_split(args, ' ');
 	len = count_char(args, ' ');
 	a = ft_stois(&len, values);

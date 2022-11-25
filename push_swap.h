@@ -69,4 +69,5 @@ int		find_lower_ar(int *a, int len_a);
 void	solve_three(t_board *board);
 void	solve_five(t_board *board);
 int		redirect(int argc, char **argv, t_board *board);
+int		str_has_digit(char *str);
 #endif

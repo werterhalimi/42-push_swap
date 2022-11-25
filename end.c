@@ -14,8 +14,7 @@
 
 void	finish(t_board board)
 {
-	free(board.a);
-	free(board.b);
+	(void) board;
 	exit(0);
 }
 
