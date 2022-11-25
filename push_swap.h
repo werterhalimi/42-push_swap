@@ -6,14 +6,21 @@
 /*   By: shalimi <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:47:20 by shalimi           #+#    #+#             */
-/*   Updated: 2022/11/24 19:02:17 by shalimi          ###   ########.fr       */
+/*   Updated: 2022/11/25 05:44:35 by shalimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define BONUS
 # include "libft/libft.h"
+# include <unsitd.h>
+# define RR "rr"
+# define SS "ss"
+# define RRR "rrr"
 # define UP "ra"
+# define SA "sa"
+# define SB "sb"
 # define DOWN "rra"
 # define ATOB "pb"
 # define BTOA "pa"
